@@ -1,0 +1,22 @@
+{
+  "name": "newsletter-renderer",
+  "version": "1.0.0",
+  "description": "An Astro-powered markdown newsletter renderer",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "render": "astro build",
+    "example": "astro build"
+  },
+  "keywords": ["newsletter", "email", "markdown", "renderer"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "astro": "^4.16.18"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

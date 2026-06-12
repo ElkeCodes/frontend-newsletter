@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Tech Digest</title>
+  <style>
+    :root {
+      font-size: 16px;
+      --bg-body: #f9f9f9;
+      --bg-container: #ffffff;
+      --bg-code: #f4f4f4;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --text-muted: #999;
+      --border-color: #eee;
+      --border-dark: #ddd;
+      --link-color: #0066cc;
+      --shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-body: #1a1a1a;
+        --bg-container: #2a2a2a;
+        --bg-code: #383838;
+        --text-primary: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --text-muted: #666;
+        --border-color: #444;
+        --border-dark: #555;
+        --link-color: #66b3ff;
+        --shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 1.25rem;
+      background-color: var(--bg-body);
+    }
+
+    article {
+      max-width: 37.5rem;
+      margin: 0 auto;
+      background-color: var(--bg-container);
+      padding: 2.5rem;
+      border-radius: 0.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    header {
+      border-bottom: 0.125rem solid var(--border-color);
+      margin-bottom: 1.875rem;
+      padding-bottom: 1.25rem;
+    }
+
+    h1 {
+      margin: 0 0 0.625rem 0;
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: var(--text-primary);
+    }
+
+    .meta {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+    }
+
+    main {
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+
+    main h2,
+    main h3,
+    main h4 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    main h2 {
+      font-size: 1.25rem;
+    }
+
+    main h3 {
+      font-size: 1.125rem;
+    }
+
+    main h4 {
+      font-size: 1rem;
+    }
+
+    main p {
+      margin: 0.75rem 0;
+    }
+
+    main a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    main a:hover {
+      text-decoration: underline;
+    }
+
+    main ul,
+    main ol {
+      margin: 0.75rem 0;
+      padding-left: 1.5rem;
+    }
+
+    main li {
+      margin: 0.375rem 0;
+    }
+
+    main code {
+      background-color: var(--bg-code);
+      color: var(--text-primary);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.1875rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+    }
+
+    main pre {
+      background-color: var(--bg-code);
+      color: var(--text-primary);
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      overflow-x: auto;
+      margin: 0.75rem 0;
+    }
+
+    main pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    main blockquote {
+      border-left: 0.1875rem solid var(--border-dark);
+      margin: 0.75rem 0;
+      padding-left: 0.75rem;
+      color: var(--text-secondary);
+    }
+
+    footer {
+      border-top: 0.125rem solid var(--border-color);
+      margin-top: 1.875rem;
+      padding-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    time {
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <header>
+      <h1>Weekly Tech Digest</h1>
+      <div class="meta">
+        <strong>Subject:</strong> Your Weekly Tech Update | 
+        <strong>Date:</strong> <time>Mon Jan 15 2024 01:00:00 GMT+0100 (Central European Standard Time)</time>
+        | <strong>Author:</strong> <address style="display: inline; font-style: normal;">Tech Team</address>
+      </div>
+    </header>
+    <main>
+      <h2>Welcome to Our Newsletter</h2>
+<p>This is your weekly roundup of the latest technology news and updates.</p>
+<h3>Featured Story</h3>
+<p>We&#39;ve been working on some exciting improvements to our platform. Here&#39;s what&#39;s new:</p>
+<ul>
+<li><strong>New Dashboard</strong>: A completely redesigned analytics dashboard with real-time insights</li>
+<li><strong>API v2</strong>: Our new REST API with improved performance and new endpoints</li>
+<li><strong>Mobile App</strong>: Native mobile applications now available on iOS and Android</li>
+</ul>
+<h3>Development Updates</h3>
+<p>Here&#39;s what our team has been focused on:</p>
+<pre><code>const newsletter = {
+  frequency: &quot;weekly&quot;,
+  topics: [&quot;tech&quot;, &quot;development&quot;, &quot;updates&quot;],
+  subscribers: 5000
+};
+</code></pre>
+<h3>Community Spotlight</h3>
+<blockquote>
+<p>&quot;Thanks for keeping us up to date with the latest tech trends. The quality of your newsletter is unmatched!&quot; - Sarah, Reader</p>
+</blockquote>
+<p>We love hearing from our community. If you have a story to share, please send us an email!</p>
+<h3>Quick Links</h3>
+<ul>
+<li><a href="https://example.com">Visit our website</a></li>
+<li><a href="https://example.com/blog">Read our blog</a></li>
+<li><a href="https://example.com/slack">Join our Slack community</a></li>
+</ul>
+<h3>What&#39;s Coming Next</h3>
+<p>Next week we&#39;ll be covering:</p>
+<ul>
+<li>AI and machine learning trends</li>
+<li>Cloud infrastructure best practices</li>
+<li>Security updates and patches</li>
+</ul>
+<hr>
+<p><strong>Questions or feedback?</strong> Reply to this email or contact us at <a href="mailto:hello@example.com">hello@example.com</a></p>
+
+    </main>
+    <footer>
+      <p>This is an automated newsletter. Please do not reply to this email.</p>
+    </footer>
+  </article>
+</body>
+</html>
