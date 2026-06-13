@@ -9,13 +9,13 @@ export interface Props {
 }
 
 const { frontmatter = {} } = Astro.props;
-const title = frontmatter.title ?? 'Untitled Newsletter';
+const title = frontmatter.title ?? "Untitled Newsletter";
 const subject = frontmatter.subject ?? title;
-const rawDate = frontmatter.date ?? new Date().toISOString().split('T')[0];
+const rawDate = frontmatter.date ?? new Date().toISOString().split("T")[0];
 const date =
   rawDate instanceof Date
-    ? rawDate.toISOString().split('T')[0]
-    : String(rawDate).split('T')[0];
+    ? rawDate.toISOString().split("T")[0]
+    : String(rawDate).split("T")[0];
 const author = frontmatter.author;
 ---
 
@@ -31,12 +31,13 @@ const author = frontmatter.author;
         --bg-body: #f9f9f9;
         --bg-container: #ffffff;
         --bg-code: #f4f4f4;
-        --text-primary: #333;
-        --text-secondary: #666;
+        --text-primary: #2a1449;
+        --text-secondary: #604486;
         --text-muted: #999;
-        --border-color: #eee;
-        --border-dark: #ddd;
-        --link-color: #0066cc;
+        --border-color: #d0d0d0;
+        --border-dark: #a3a2a0;
+        --link-color: #604486;
+        --link-color-hover: #4c3172;
         --shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
       }
 
@@ -50,7 +51,8 @@ const author = frontmatter.author;
           --text-muted: #666;
           --border-color: #444;
           --border-dark: #555;
-          --link-color: #66b3ff;
+          --link-color: #c4a0f5;
+          --link-color-hover: #d8bfff;
           --shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
         }
       }
@@ -62,7 +64,13 @@ const author = frontmatter.author;
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+        font-family:
+          "Segoe UI",
+          "Segoe UI Web (West European)",
+          -apple-system,
+          BlinkMacSystemFont,
+          Roboto,
+          "Helvetica Neue",
           sans-serif;
         color: var(--text-primary);
         line-height: 1.6;
@@ -71,7 +79,7 @@ const author = frontmatter.author;
       }
 
       article {
-        max-width: 37.5rem;
+        max-width: 65ch;
         margin: 0 auto;
         background-color: var(--bg-container);
         padding: 2.5rem;
@@ -87,9 +95,10 @@ const author = frontmatter.author;
 
       h1 {
         margin: 0 0 0.625rem 0;
-        font-size: 1.75rem;
+        font-size: 2rem;
         font-weight: 700;
         color: var(--text-primary);
+        letter-spacing: -0.01em;
       }
 
       .meta {
@@ -99,7 +108,7 @@ const author = frontmatter.author;
       }
 
       main {
-        font-size: 1rem;
+        font-size: 1.25rem;
         color: var(--text-primary);
       }
 
@@ -113,7 +122,7 @@ const author = frontmatter.author;
       }
 
       main :global(h2) {
-        font-size: 1.25rem;
+        font-size: 1.375rem;
       }
 
       main :global(h3) {
@@ -122,6 +131,9 @@ const author = frontmatter.author;
 
       main :global(h4) {
         font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--text-secondary);
       }
 
       main :global(p) {
@@ -134,6 +146,7 @@ const author = frontmatter.author;
       }
 
       main :global(a:hover) {
+        color: var(--link-color-hover);
         text-decoration: underline;
       }
 
@@ -152,7 +165,7 @@ const author = frontmatter.author;
         color: var(--text-primary);
         padding: 0.125rem 0.375rem;
         border-radius: 0.1875rem;
-        font-family: 'Courier New', monospace;
+        font-family: "Courier New", monospace;
         font-size: 0.875rem;
       }
 
@@ -172,10 +185,12 @@ const author = frontmatter.author;
       }
 
       main :global(blockquote) {
-        border-left: 0.1875rem solid var(--border-dark);
+        border-left: 0.25rem solid var(--link-color);
         margin: 0.75rem 0;
-        padding-left: 0.75rem;
+        padding: 0.5rem 0.75rem;
         color: var(--text-secondary);
+        background-color: var(--bg-code);
+        border-radius: 0 0.25rem 0.25rem 0;
       }
 
       footer {
@@ -195,6 +210,12 @@ const author = frontmatter.author;
         display: inline;
         font-style: normal;
       }
+
+      main :global(hr) {
+        border: none;
+        border-top: 0.125rem solid var(--border-color);
+        margin: 1.5rem 0;
+      }
     </style>
   </head>
   <body>
@@ -202,22 +223,28 @@ const author = frontmatter.author;
       <header>
         <h1>{title}</h1>
         <p class="meta">
-          <strong>Subject:</strong> {subject}
-          {' | '}
-          <strong>Date:</strong> <time>{date}</time>
-          {author && (
-            <>
-              {' | '}
-              <strong>Author:</strong> <address>{author}</address>
-            </>
-          )}
+          <strong>Subject:</strong>
+          {subject}
+          {" | "}
+          <strong>Date:</strong>
+          <time>{date}</time>
+          {
+            author && (
+              <>
+                {" | "}
+                <strong>Author:</strong> <address>{author}</address>
+              </>
+            )
+          }
         </p>
       </header>
       <main>
         <slot />
       </main>
       <footer>
-        <p>This is an automated newsletter. Please do not reply to this email.</p>
+        <p>
+          This is an automated newsletter. Please do not reply to this email.
+        </p>
       </footer>
     </article>
   </body>
