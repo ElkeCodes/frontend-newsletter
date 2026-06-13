@@ -1,0 +1,131 @@
+---
+layout: ../layouts/NewsletterLayout.astro
+title: Style Guide
+subject: Newsletter component showcase
+date: 2026-06-13
+author: Style Guide
+---
+
+This page renders every styled component in the newsletter layout so you can preview the full design system at a glance.
+
+---
+
+## Typography
+
+### Headings
+
+# H1 — Newsletter Title
+
+## H2 — Section Heading
+
+### H3 — Subsection Heading
+
+#### H4 — Label / Eyebrow
+
+### Body text
+
+Regular paragraph text at the default size. The quick brown fox jumps over the lazy dog. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+A second paragraph to show spacing between blocks of body copy. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo.
+
+**Bold text** stands out from the paragraph. *Italic text* adds soft emphasis. You can also combine them for ***bold italic***.
+
+### Links
+
+Here is an [inline link](#) that should show the brand purple colour and underline on hover. And a [second link with a longer label](#) to test spacing in running text.
+
+---
+
+## Lists
+
+### Unordered list
+
+- First item in an unordered list
+- Second item with a bit more text to show line wrapping behaviour on narrower containers
+- Third item
+  - Nested item one
+  - Nested item two
+- Fourth item back at the top level
+
+### Ordered list
+
+1. First step
+2. Second step with more content to see how the number aligns against the text
+3. Third step
+   1. Nested numbered step
+   2. Another nested step
+4. Fourth step
+
+---
+
+## Blockquote
+
+> "Good design is as little design as possible." — Dieter Rams
+
+> This is a longer blockquote that spans multiple lines. It should have the purple left border, a subtle background tint, and rounded corners on the right side. The text colour should use `--text-secondary`.
+
+---
+
+## Code
+
+### Inline code
+
+Use `npm run build` to compile the newsletter. The `<NewsletterLayout>` component lives in `src/layouts/`.
+
+### Code block
+
+```typescript
+interface NewsletterFrontmatter {
+  title: string;
+  subject?: string;
+  date: string;
+  author?: string;
+  preview?: string;
+}
+
+async function renderNewsletter(slug: string): Promise<string> {
+  const content = await import(`../pages/newsletters/${slug}.mdx`);
+  return content.default;
+}
+```
+
+```css
+:root {
+  --text-primary: #2a1449;
+  --text-secondary: #604486;
+  --link-color: #604486;
+  --link-color-hover: #4c3172;
+}
+```
+
+---
+
+## Horizontal rule
+
+Above the rule.
+
+---
+
+Below the rule.
+
+---
+
+## Mixed content
+
+A realistic section that mixes several elements together, the way a real newsletter might read.
+
+### What shipped this week
+
+We landed three improvements in the last sprint:
+
+1. **Link preview cards** — drop any URL into an MDX file with `<LinkPreview url="..." />` and a card is fetched and rendered at build time.
+2. **Dark mode palette** — all CSS variables now have proper dark-mode overrides, including `--link-color-hover`.
+3. **Heading hierarchy** — h2 through h4 now have distinct sizes, weights, and treatments.
+
+> These changes are all backwards-compatible. Existing `.md` newsletters render without modification.
+
+The next sprint focuses on:
+
+- Outlook-safe inline CSS output
+- A send script using Microsoft Graph
+- Recipient list management
