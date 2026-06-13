@@ -33,11 +33,12 @@ const author = frontmatter.author;
         --bg-code: #f4f4f4;
         --text-primary: #2a1449;
         --text-secondary: #604486;
-        --text-muted: #999;
+        --text-muted: #545454;
         --border-color: #d0d0d0;
         --border-dark: #a3a2a0;
         --link-color: #604486;
         --link-color-hover: #4c3172;
+        --border-radius: 0.25rem;
         --shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.1);
       }
 
@@ -47,12 +48,12 @@ const author = frontmatter.author;
           --bg-container: #2a2a2a;
           --bg-code: #383838;
           --text-primary: #e0e0e0;
-          --text-secondary: #b0b0b0;
-          --text-muted: #666;
+          --text-secondary: #cccccc;
+          --text-muted: #c0c0c0;
           --border-color: #444;
           --border-dark: #555;
-          --link-color: #c4a0f5;
-          --link-color-hover: #d8bfff;
+          --link-color: #d4b8ff;
+          --link-color-hover: #e8d5ff;
           --shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.5);
         }
       }
@@ -79,7 +80,7 @@ const author = frontmatter.author;
       }
 
       article {
-        max-width: 65ch;
+        max-width: 96ch;
         margin: 0 auto;
         background-color: var(--bg-container);
         padding: 2.5rem;
@@ -107,60 +108,60 @@ const author = frontmatter.author;
         margin-top: 0.5rem;
       }
 
-      main {
+      .content {
         font-size: 1.25rem;
         color: var(--text-primary);
       }
 
-      main :global(h2),
-      main :global(h3),
-      main :global(h4) {
+      .content :global(h2),
+      .content :global(h3),
+      .content :global(h4) {
         margin-top: 1.5rem;
         margin-bottom: 0.75rem;
         color: var(--text-primary);
         font-weight: 600;
       }
 
-      main :global(h2) {
+      .content :global(h2) {
         font-size: 1.375rem;
       }
 
-      main :global(h3) {
+      .content :global(h3) {
         font-size: 1.125rem;
       }
 
-      main :global(h4) {
+      .content :global(h4) {
         font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 0.04em;
         color: var(--text-secondary);
       }
 
-      main :global(p) {
+      .content :global(p) {
         margin: 0.75rem 0;
       }
 
-      main :global(a) {
+      .content :global(a) {
         color: var(--link-color);
         text-decoration: none;
       }
 
-      main :global(a:hover) {
+      .content :global(a:hover) {
         color: var(--link-color-hover);
         text-decoration: underline;
       }
 
-      main :global(ul),
-      main :global(ol) {
+      .content :global(ul),
+      .content :global(ol) {
         margin: 0.75rem 0;
         padding-left: 1.5rem;
       }
 
-      main :global(li) {
+      .content :global(li) {
         margin: 0.375rem 0;
       }
 
-      main :global(code) {
+      .content :global(code) {
         background-color: var(--bg-code);
         color: var(--text-primary);
         padding: 0.125rem 0.375rem;
@@ -169,26 +170,26 @@ const author = frontmatter.author;
         font-size: 0.875rem;
       }
 
-      main :global(pre) {
+      .content :global(pre) {
         background-color: var(--bg-code);
         color: var(--text-primary);
-        padding: 0.75rem;
+        padding: 0.25rem 0.75rem;
         border-radius: 0.25rem;
         overflow-x: auto;
         margin: 0.75rem 0;
       }
 
-      main :global(pre code) {
+      .content :global(pre code) {
         background-color: transparent;
         color: inherit;
         padding: 0;
       }
 
-      main :global(blockquote) {
+      .content :global(blockquote) {
         border-left: 0.25rem solid var(--link-color);
         margin: 0.75rem 0;
         padding: 0.5rem 0.75rem;
-        color: var(--text-secondary);
+        color: var(--text-primary);
         background-color: var(--bg-code);
         border-radius: 0 0.25rem 0.25rem 0;
       }
@@ -211,41 +212,82 @@ const author = frontmatter.author;
         font-style: normal;
       }
 
-      main :global(hr) {
+      .content :global(hr) {
         border: none;
         border-top: 0.125rem solid var(--border-color);
         margin: 1.5rem 0;
       }
+
+      /* Skip navigation link (visible on focus for keyboard users) */
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 0;
+        padding: 0.5rem 1rem;
+        background: var(--bg-container);
+        color: var(--link-color);
+        font-weight: 600;
+        text-decoration: none;
+        border: 0.125rem solid var(--link-color);
+        border-radius: 0 0 0.25rem 0;
+        z-index: 100;
+      }
+
+      .skip-link:focus-visible {
+        top: 0;
+      }
+
+      /* Focus indicators — WCAG 2.4.7 / 2.4.13 */
+      :focus-visible {
+        outline: 0.1875rem solid var(--link-color);
+        outline-offset: 0.125rem;
+        border-radius: 0.125rem;
+      }
+
+      /* Honour reduced-motion preference — WCAG 2.3.3 */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   </head>
   <body>
-    <article>
-      <header>
-        <h1>{title}</h1>
-        <p class="meta">
-          <strong>Subject:</strong>
-          {subject}
-          {" | "}
-          <strong>Date:</strong>
-          <time>{date}</time>
-          {
-            author && (
-              <>
-                {" | "}
-                <strong>Author:</strong> <address>{author}</address>
-              </>
-            )
-          }
-        </p>
-      </header>
-      <main>
-        <slot />
-      </main>
-      <footer>
-        <p>
-          This is an automated newsletter. Please do not reply to this email.
-        </p>
-      </footer>
-    </article>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <main>
+      <article>
+        <header>
+          <h1>{title}</h1>
+          <p class="meta">
+            <strong>Subject:</strong>
+            {subject}
+            {" | "}
+            <strong>Date:</strong>
+            <time datetime={date}>{date}</time>
+            {
+              author && (
+                <>
+                  {" | "}
+                  <strong>Author:</strong> <address>{author}</address>
+                </>
+              )
+            }
+          </p>
+        </header>
+        <div id="main-content" class="content">
+          <slot />
+        </div>
+        <footer>
+          <p>
+            This is an automated newsletter. Please do not reply to this email.
+          </p>
+        </footer>
+      </article>
+    </main>
   </body>
 </html>
